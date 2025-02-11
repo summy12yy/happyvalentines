@@ -1,0 +1,81 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>happy valentines my love this</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;     
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: #e1dcdc;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .image {
+            width: 300px;
+            height: auto;
+            margin-right: 20px;
+        }
+        .form-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        input[type="password"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            width: 200px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            background-color: #ff0000;
+            color: white;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #a93232;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="lwlf.jpg" alt="Side Image" class="image">
+        <div class="form-container">
+            <h2>GUESS THE PASSWORD!!!!</h2>
+            if want hints = kiss moko
+            <input type="password" id="password" placeholder="Enter password">
+            <button onclick="checkPassword()">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        function checkPassword() {
+            var password = document.getElementById("password").value;
+            var correctPassword = "november42024"; // Replace with your desired password
+            var redirectUrl = "loveyou2.html"; // Replace with your desired URL to redirect to
+
+            if (password === correctPassword) {
+                window.location.href = redirectUrl;
+            } else {
+                alert("Incorrect password. Please try again.");
+            }
+        }
+    </script>
+</body>
+</html>
