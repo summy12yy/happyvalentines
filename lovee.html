@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our time together</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #fff0f5;
+      color: #ff4081;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 600px;
+      padding: 30px;
+      background-color: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(255, 64, 129, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    h1 {
+      color: #ff1493;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .counter {
+      font-size: 2rem;
+      margin: 30px 0;
+      background-color: #ffe6ee;
+      padding: 20px;
+      border-radius: 15px;
+      border: 3px dashed #ff69b4;
+    }
+    
+    .time-unit {
+      display: inline-block;
+      margin: 0 10px;
+      background-color: white;
+      padding: 10px;
+      border-radius: 10px;
+      min-width: 60px;
+      border: 2px solid #ff69b4;
+    }
+    
+    .label {
+      font-size: 1rem;
+      display: block;
+      margin-top: 5px;
+    }
+    
+    .hearts {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    .heart {
+      position: absolute;
+      font-size: 20px;
+      color: rgba(255, 105, 180, 0.3);
+      animation: float 6s ease-in-out infinite;
+      transform-origin: center;
+    }
+    
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-20px) rotate(5deg);
+      }
+    }
+    
+    .footer {
+      margin-top: 30px;
+      font-size: 0.9rem;
+      color: #ff69b4;
+    }
+    
+    .cute-button {
+      margin-top: 25px;
+      padding: 12px 25px;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .cute-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(255, 105, 180, 0.6);
+      background-color: #ff4081;
+    }
+    
+    .cute-button:active {
+      transform: translateY(0);
+    }
+    
+    .cute-button::before {
+      content: "❤️";
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    .cute-button::after {
+      content: "❤️";
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Time Since November 4, 2024</h1>
+    <p>Counting our precious moment ❤️</p>
+    
+    <div class="counter">
+      <div class="time-unit" id="days">0<span class="label">Days</span></div>
+      <div class="time-unit" id="hours">0<span class="label">Hours</span></div>
+      <div class="time-unit" id="minutes">0<span class="label">Minutes</span></div>
+      <div class="time-unit" id="seconds">0<span class="label">Seconds</span></div>
+    </div>
+    
+    <div class="hearts" id="hearts"></div>
+    
+    <div class="footer">
+      Made by ur broke bf 
+    </div>
+    
+    <button class="btn" onclick="window.location.href='third hreff.html';">continue</button>
+  </div>
+
+  <script>
+    // Create floating hearts
+    const heartsContainer = document.getElementById('hearts');
+    const heartSymbols = ['❤️', '💖', '💕', '💓', '💗', '💘', '💝'];
+    
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+      heart.style.left = `${Math.random() * 100}%`;
+      heart.style.top = `${Math.random() * 100}%`;
+      heart.style.fontSize = `${Math.random() * 15 + 10}px`;
+      heart.style.animationDuration = `${Math.random() * 5 + 3}s`;
+      heart.style.animationDelay = `${Math.random() * 5}s`;
+      heartsContainer.appendChild(heart);
+    }
+    
+    // Time counter function
+    function updateCounter() {
+      const startDate = new Date('November 4, 2024 00:00:00').getTime();
+      const now = new Date().getTime();
+      const timeDifference = now - startDate;
+      
+      // Calculate days, hours, minutes, seconds
+      const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+      
+      // Update the display
+      document.getElementById('days').innerHTML = days + '<span class="label">Days</span>';
+      document.getElementById('hours').innerHTML = hours + '<span class="label">Hours</span>';
+      document.getElementById('minutes').innerHTML = minutes + '<span class="label">Minutes</span>';
+      document.getElementById('seconds').innerHTML = seconds + '<span class="label">Seconds</span>';
+    }
+    
+    // Update counter every second
+    setInterval(updateCounter, 1000);
+    
+    // Initial counter update
+    updateCounter();
+    
+    // Button click event
+    document.getElementById('loveButton').addEventListener('click', function() {
+      // Create heart burst effect
+      for (let i = 0; i < 15; i++) {
+        setTimeout(() => {
+          const heart = document.createElement('div');
+          heart.classList.add('heart');
+          heart.textContent = heartSymbols[Math.floor(Math.random() * heartSymbols.length)];
+          heart.style.left = `${Math.random() * 100}%`;
+          heart.style.top = `${Math.random() * 100}%`;
+          heart.style.fontSize = `${Math.random() * 15 + 10}px`;
+          heart.style.animationDuration = `${Math.random() * 5 + 3}s`;
+          heartsContainer.appendChild(heart);
+          
+          // Remove heart after animation completes
+          setTimeout(() => {
+            heart.remove();
+          }, 8000);
+        }, i * 100);
+      }
+      
+      // Visual feedback for button
+      this.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        this.style.transform = 'translateY(-3px)';
+      }, 200);
+    });
+  </script>
+</body>
+</html>
